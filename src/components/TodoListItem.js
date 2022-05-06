@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BiSave, BiBlock, BiPencil, BiTrash } from "react-icons/bi";
 import { useForm } from "../hooks/useForm";
 
 export const TodoListItem = ({
@@ -22,8 +23,13 @@ export const TodoListItem = ({
   return (
     <>
       {editMode ? (
-        <li className="todo-list__item">
+        <li
+          className={`todo-list__item todo-list__item--editing ${
+            todo.status ? "todo-list__item--completed" : ""
+          }`}
+        >
           <input
+            autoComplete="off"
             className="todo-list__input"
             type="text"
             name="task"
@@ -31,17 +37,32 @@ export const TodoListItem = ({
             onChange={handleInputChange}
           />
           <div className="todo-list__buttons">
-            <button className="todo-list__button" onClick={() => handleToggleEdit(true)}>Confirm</button>
-            <button className="todo-list__button" onClick={() => handleToggleEdit(false)}>Cancel</button>
+            <BiSave
+              className="todo-list__button"
+              onClick={() => handleToggleEdit(true)}
+            />
+            <BiBlock
+              className="todo-list__button"
+              onClick={() => handleToggleEdit(false)}
+            />
           </div>
         </li>
       ) : (
-        <li className="todo-list__item">
-          <p className={`todo-list__p ${todo.status ? "todo-list__p-completed" : ""}`}>{todo.task}</p>
+        <li
+          className={`todo-list__item ${
+            todo.status ? "todo-list__item--completed" : ""
+          }`}
+        >
+          <p className="todo-list__p" onClick={() => handleToggle(todo.id)}>{todo.task}</p>
           <div className="todo-list__buttons">
-            <button className="todo-list__button" onClick={() => handleToggle(todo.id)}>Complete</button>
-            <button className="todo-list__button" onClick={() => setEditMode(true)}>Edit</button>
-            <button className="todo-list__button" onClick={() => handleDelete(todo.id)}>Delete</button>
+            <BiPencil
+              className="todo-list__button"
+              onClick={() => setEditMode(true)}
+            />
+            <BiTrash
+              className="todo-list__button"
+              onClick={() => handleDelete(todo.id)}
+            />
           </div>
         </li>
       )}

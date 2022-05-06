@@ -5,7 +5,20 @@ import { TodoAdd } from "./TodoAdd";
 import { TodoList } from "./TodoList";
 
 const init = () => {
-  return JSON.parse(localStorage.getItem("todos")) || [];
+  return (
+    JSON.parse(localStorage.getItem("todos")) || [
+      {
+        id: 12345,
+        status: false,
+        task: "Learn React",
+      },
+      {
+        id: 54321,
+        status: false,
+        task: "Learn Node.js",
+      },
+    ]
+  );
 };
 
 export const Todo = () => {

@@ -33,6 +33,7 @@ export const TodoAdd = () => {
   return (
     <form className="form">
       <input
+        autoComplete="off"
         className="form__input"
         type="text"
         name="task"
