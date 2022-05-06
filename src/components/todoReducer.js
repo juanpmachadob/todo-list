@@ -13,6 +13,9 @@ export const todoReducer = (state = [], action) => {
           : todo
       );
 
+    case "clear":
+      return state.filter((todo) => todo.status !== true);
+
     case "toggle":
       return state.map((todo) =>
         todo.id === action.payload ? { ...todo, status: !todo.status } : todo

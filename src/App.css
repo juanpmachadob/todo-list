@@ -3,6 +3,7 @@
 :root {
   --color-primary: #07b88c;
   --color-secondary: #5d0cff;
+  --color-tertiary: #d42a57;
   --color-background: #e5e5e5;
   --main-font: "Rubik", sans-serif;
 }
@@ -86,7 +87,7 @@ hr {
   padding: 0 1rem;
 }
 
-.form__button:active {
+.form__button:active, .todo-list__options__button:active {
   filter: grayscale(0.25);
   -webkit-filter: grayscale(0.25);
 }
@@ -116,7 +117,7 @@ hr {
   user-select: none;
 }
 
-.todo-list__item.todo-list__item--editing{
+.todo-list__item.todo-list__item--editing {
   background-color: transparent;
   border: 2px solid var(--color-secondary);
   color: black;
@@ -165,4 +166,24 @@ hr {
 
 .todo-list__item:last-of-type, .todo-list__button:last-of-type {
   margin: 0;
+}
+
+.todo-list__options {
+  text-align: right;
+}
+
+.todo-list__options__button {
+  background-color: var(--color-tertiary);
+  border: 0;
+  border-radius: .5rem;
+  -webkit-border-radius: .5rem;
+  -moz-border-radius: .5rem;
+  -ms-border-radius: .5rem;
+  -o-border-radius: .5rem;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  height: 45px;
+  padding: 0 1rem;
+  user-select: none;
 }

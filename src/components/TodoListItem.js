@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BiSave, BiBlock, BiPencil, BiTrash } from "react-icons/bi";
 import { useForm } from "../hooks/useForm";
 
@@ -10,33 +10,46 @@ export const TodoListItem = ({
 }) => {
   const [editMode, setEditMode] = useState(false);
 
-  const [inputValue, handleInputChange, reset] = useForm(todo);
+  const inputRef = useRef();
+  useEffect(() => {
+    if (editMode) inputRef.current.focus();
+  }, [editMode]);
 
+  const [inputValue, handleInputChange, reset] = useForm(todo);
   const { task } = inputValue;
 
-  const handleToggleEdit = (edit = false) => {
-    if (edit) handleModify(inputValue);
-    if (!edit) reset();
+  const handleToggleEdit = (save = false) => {
+    save ? handleModify(inputValue) : reset();
     setEditMode(!editMode);
   };
 
   return (
-    <>
-      {editMode ? (
-        <li
-          className={`todo-list__item todo-list__item--editing ${
-            todo.status ? "todo-list__item--completed" : ""
-          }`}
-        >
-          <input
-            autoComplete="off"
-            className="todo-list__input"
-            type="text"
-            name="task"
-            value={task}
-            onChange={handleInputChange}
-          />
-          <div className="todo-list__buttons">
+    <li
+      className={`todo-list__item ${
+        todo.status ? "todo-list__item--completed" : ""
+      } ${editMode ? "todo-list__item--editing" : ""}`}
+    >
+      {!editMode && (
+        <p className="todo-list__p" onClick={() => handleToggle(todo.id)}>
+          {todo.task}
+        </p>
+      )}
+
+      <input
+        autoComplete="off"
+        className="todo-list__input"
+        type="text"
+        name="task"
+        placeholder="Edit task..."
+        hidden={!editMode}
+        ref={inputRef}
+        value={task}
+        onChange={handleInputChange}
+        onKeyPress={(e) => e.key === "Enter" && handleToggleEdit(true)}
+      />
+      <div className="todo-list__buttons">
+        {editMode ? (
+          <>
             <BiSave
               className="todo-list__button"
               onClick={() => handleToggleEdit(true)}
@@ -45,27 +58,20 @@ export const TodoListItem = ({
               className="todo-list__button"
               onClick={() => handleToggleEdit(false)}
             />
-          </div>
-        </li>
-      ) : (
-        <li
-          className={`todo-list__item ${
-            todo.status ? "todo-list__item--completed" : ""
-          }`}
-        >
-          <p className="todo-list__p" onClick={() => handleToggle(todo.id)}>{todo.task}</p>
-          <div className="todo-list__buttons">
+          </>
+        ) : (
+          <>
             <BiPencil
               className="todo-list__button"
-              onClick={() => setEditMode(true)}
+              onClick={() => handleToggleEdit(false)}
             />
             <BiTrash
               className="todo-list__button"
               onClick={() => handleDelete(todo.id)}
             />
-          </div>
-        </li>
-      )}
-    </>
+          </>
+        )}
+      </div>
+    </li>
   );
 };
