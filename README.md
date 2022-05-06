@@ -9,8 +9,7 @@ A basic todo list application developed in **React** using Hooks for add, delete
 ### Table of contents 📃
 
 - [Todo List](#todo-list)
-  - [Try demo](#try-demo)
-    - [Table of contents 📃](#table-of-contents-)
+  - [Table of contents 📃](#table-of-contents-)
   - [Starting 🚀](#starting-)
     - [Pre-requirements 📋](#pre-requirements-)
     - [Installation 🔧](#installation-)
