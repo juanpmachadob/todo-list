@@ -2,7 +2,7 @@
 
 A basic todo list application developed in **React** using Hooks for add, delete, edit and complete custom tasks.
 
-## [Try demo](https://blog-gamelist.herokuapp.com/)
+## [Try demo](https://ju4npx.github.io/todo-list/)
 
 <img src="./preview.jpg">
 
