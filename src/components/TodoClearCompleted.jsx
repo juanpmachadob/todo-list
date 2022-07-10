@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { TodoContext } from "components/todoContext";
+import { TodoContext } from "state/todoContext";
 
 export const TodoClearCompleted = () => {
   const { todos, dispatch } = useContext(TodoContext);

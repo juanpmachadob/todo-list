@@ -1,8 +1,8 @@
-import { Todo } from "components/Todo"
+import { TodoPage } from "pages/TodoPage"
 import "App.css"
 
 const App = () => {
-  return <Todo />
+  return <TodoPage />
 }
 
 export default App
