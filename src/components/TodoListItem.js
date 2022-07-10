@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { BiSave, BiBlock, BiPencil, BiTrash } from "react-icons/bi";
-import { useForm } from "../hooks/useForm";
+import { useForm } from "hooks/useForm";
 
 export const TodoListItem = ({
   todo,

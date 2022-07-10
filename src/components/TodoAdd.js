@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { useForm } from "../hooks/useForm";
-import { TodoContext } from "./todoContext";
+import { useForm } from "hooks/useForm";
+import { TodoContext } from "components/todoContext";
 
 export const TodoAdd = () => {
   const [{ task }, handleInputChange, reset] = useForm({

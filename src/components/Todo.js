@@ -1,10 +1,10 @@
 import { useEffect, useReducer } from "react";
-import { todoReducer } from "./todoReducer";
-import { TodoContext } from "./todoContext";
-import { TodoAdd } from "./TodoAdd";
-import { TodoList } from "./TodoList";
-import { TodoClearCompleted } from "./TodoClearCompleted";
-import { initialData } from "../consts/initialData";
+import { todoReducer } from "components/todoReducer";
+import { TodoContext } from "components/todoContext";
+import { TodoAdd } from "components/TodoAdd";
+import { TodoList } from "components/TodoList";
+import { TodoClearCompleted } from "components/TodoClearCompleted";
+import { initialData } from "consts/initialData";
 
 export const Todo = () => {
   const [todos, dispatch] = useReducer(todoReducer, [], initialData);
